@@ -37,6 +37,14 @@ export default {
   */
   plugins: [
   ],
+  router: {
+    routes: [
+      {
+        path: '/alala',
+        component: 'pages/catalog.vue'
+      }
+    ]
+  },
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
