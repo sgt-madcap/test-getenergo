@@ -1,6 +1,6 @@
 <template>
   <div>
-    <catalog-menu :categories="currentCategories" />
+    <catalog-menu title="Каталог" :categories="currentCategories" />
   </div>
 </template>
 

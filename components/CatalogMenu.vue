@@ -2,7 +2,7 @@
   <div class="catalog-menu-wrapper">
     <div class="catalog-menu-header">
       <h5 class="catalog-title">
-        Категории:
+        {{ title }}:
       </h5>
       <i class="material-icons catalog-menu-button" @click="showCatalog = !showCatalog">
         {{ showCatalog ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
@@ -26,6 +26,10 @@ export default {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: []
+    },
+    title: {
+      type: String,
+      default: 'Название'
     }
   },
   data: () => ({
