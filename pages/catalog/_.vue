@@ -18,7 +18,7 @@ export default {
   computed: {
     ...mapGetters(['currentCategories', 'allItems'])
   },
-  mounted () {
+  created () {
     const url = this.$route.params.pathMatch
     const id = this.allItems.find(item => item.url === url).category_id
     this.$store.dispatch('getCurrentCategories', id)

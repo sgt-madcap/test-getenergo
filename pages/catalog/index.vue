@@ -14,9 +14,6 @@ export default {
   },
   computed: {
     ...mapGetters(['currentCategories', 'allItems'])
-  },
-  mounted () {
-    this.$store.dispatch('fetchItems')
   }
 }
 </script>
