@@ -10,7 +10,7 @@
     </div>
 
     <ul v-if="showCatalog" class="catalog-list">
-      <li v-for="cat in categories" :key="cat.id">
+      <li v-for="cat in categories" :key="cat.id" @click="getRoute(cat.category_id)">
         <nuxt-link :to="`/catalog/${cat.url}`">
           {{ cat.name }}
         </nuxt-link>
@@ -34,7 +34,13 @@ export default {
   },
   data: () => ({
     showCatalog: true
-  })
+  }),
+  methods: {
+    getRoute (id) {
+      this.$store.dispatch('getCurrentCategories', id)
+      console.log(id)
+    }
+  }
 }
 </script>
 

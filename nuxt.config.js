@@ -38,12 +38,33 @@ export default {
   plugins: [
   ],
   router: {
-    routes: [
-      {
-        path: '/alala',
-        component: 'pages/catalog.vue'
-      }
-    ]
+    extendRoutes (routes, resolve) {
+      const routesToAdd = [
+        { // add your routes here
+          name: 'catalog-categories',
+          path: '/catalog/*',
+          component: resolve(__dirname, 'pages/catalog.vue'),
+          chunkName: 'pages/catalog'
+        }
+      ]
+
+      const existingRoutesToRemove = routesToAdd.map(route => route.name)
+
+      const generateRoutes = routes.filter((route) => {
+        return !existingRoutesToRemove.includes(route.name)
+      })
+
+      routesToAdd.forEach(({ name, path, component, chunkName }) => {
+        generateRoutes.push({
+          name,
+          path,
+          component,
+          chunkName
+        })
+      })
+
+      routes.splice(0, routes.length, ...generateRoutes)
+    }
   },
   /*
   ** Auto import components
