@@ -14,9 +14,15 @@ export default {
   components: {
     Navbar
   },
-  created () {
-    this.$store.dispatch('fetchItems')
-  }
+  async fetch () {
+    // const { data: { items } } = await this.$axios.get('/api/catalog/categories?limit=0')
+    // this.items = items
+    await this.$store.dispatch('fetchItems')
+    // console.log(data)
+  },
+  data: () => ({
+    items: []
+  })
 }
 </script>
 

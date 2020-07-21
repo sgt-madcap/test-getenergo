@@ -19,9 +19,13 @@ const store = () => new Vuex.Store({
   },
   actions: {
     async fetchItems ({ commit, dispatch }) {
-      const { data: { items } } = await this.$axios.get('/api/catalog/categories?limit=0')
-      commit('setItems', items)
-      dispatch('getCurrentCategories')
+      try {
+        const { data: { items } } = await this.$axios.get('/api/catalog/categories?limit=0')
+        commit('setItems', items)
+        dispatch('getCurrentCategories')
+      } catch (e) {
+        console.error(e)
+      }
     },
     getCurrentCategories ({ commit }, payload) {
       const newCategories = []

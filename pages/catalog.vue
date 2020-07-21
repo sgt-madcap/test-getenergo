@@ -13,7 +13,17 @@ export default {
     CatalogMenu
   },
   computed: {
-    ...mapGetters(['currentCategories', 'allItems'])
+    ...mapGetters(['currentCategories', 'allItems']),
+    catalogRoute () {
+      const path = this.$route.params.pathMatch
+      const id = this.allItems.find(el => el.url === path).category_id
+      if (path) {
+        this.$store.dispatch('getCurrentCategories', id)
+      } else {
+        this.$store.dispatch('getCurrentCategories')
+      }
+      return path
+    }
   }
 }
 </script>
